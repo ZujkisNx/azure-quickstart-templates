@@ -19,7 +19,7 @@
       "metadata": {
         "description": "The type of the Storage Account created"
       },
-      "defaultValue": "Premium_LRS"
+      "defaultValue": "Standard_LRS"
     },
     "virtualNetworkName": {
       "type": "string",
@@ -33,7 +33,7 @@
       "metadata": {
         "description": "The address range of the new VNET in CIDR format"
       },
-      "defaultValue": "10.0.0.0/16"
+      "defaultValue": "10.195.14.0/24"
     },
     "adSubnetName": {
       "type": "string",
@@ -47,7 +47,7 @@
       "metadata": {
         "description": "The address range of the subnet created in the new VNET"
       },
-      "defaultValue": "10.0.0.0/24"
+      "defaultValue": "10.195.14.0/25"
     },
     "adPDCNicName": {
       "type": "string",
@@ -61,7 +61,7 @@
       "metadata": {
         "description": "The IP address of the new AD PDC"
       },
-      "defaultValue": "10.0.0.4"
+      "defaultValue": "10.195.14.4"
     },
     "adBDCNicName": {
       "type": "string",
@@ -75,7 +75,7 @@
       "metadata": {
         "description": "The IP address of the new AD BDC"
       },
-      "defaultValue": "10.0.0.5"
+      "defaultValue": "10.195.14.5"
     },
     "publicIPAddressName": {
       "type": "string",
@@ -100,14 +100,14 @@
       "metadata": {
         "description": "The computer name of the PDC"
       },
-      "defaultValue": "adPDC"
+      "defaultValue": "DC1"
     },
     "adBDCVMName": {
       "type": "string",
       "metadata": {
         "description": "The computer name of the BDC"
       },
-      "defaultValue": "adBDC"
+      "defaultValue": "DC2"
     },
     "adminUsername": {
       "type": "string",
@@ -125,6 +125,7 @@
     "adVMSize": {
       "type": "string",
       "allowedValues": [
+        "Standard_A1_v2",
         "Standard_D1",
         "Standard_DS1",
         "Standard_D2",
@@ -161,7 +162,7 @@
       "metadata": {
         "description": "The size of the VM Created"
       },
-      "defaultValue": "Standard_DS2_v2"
+      "defaultValue": "Standard_A1_v2"
     },
     "imagePublisher": {
       "type": "string",
@@ -179,7 +180,7 @@
     },
     "imageSKU": {
       "type": "string",
-      "defaultValue": "2012-R2-Datacenter",
+      "defaultValue": "2016-Datacenter",
       "metadata": {
         "description": "Image SKU"
       }
@@ -244,7 +245,7 @@
     "adBEAddressPoolID": "[concat(variables('adlbID'),'/backendAddressPools/',variables('adLBBE'))]",
     "adPDCDataDisk": "ADPDCDataDisk",
     "adBDCDataDisk": "ADBDCDataDisk",
-    "adDataDiskSize": 1000,
+    "adDataDiskSize": 1000,adPDCConfigurationFunction
     "vnetTemplateUri": "[concat(parameters('assetLocation'),'/nestedtemplates/vnet.json')]",
     "nicTemplateUri": "[concat(parameters('assetLocation'),'/nestedtemplates/nic.json')]",
     "vnetwithDNSTemplateUri": "[concat(parameters('assetLocation'),'/nestedtemplates/vnet-with-dns-server.json')]",
